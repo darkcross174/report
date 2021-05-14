@@ -1,8 +1,10 @@
+package ru.netology.delivery.test;
+
 import com.codeborne.selenide.Condition;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.Keys;
-import ru.netology.data.DataGenerator;
+import ru.netology.delivery.data.DataGenerator;
 
 import static com.codeborne.selenide.Selectors.withText;
 import static com.codeborne.selenide.Selenide.$;

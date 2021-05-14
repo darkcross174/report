@@ -1,6 +1,5 @@
-package ru.netology.data;
+package ru.netology.delivery.data;
 
-import com.github.javafaker.CreditCardType;
 import com.github.javafaker.Faker;
 
 import java.time.LocalDate;
