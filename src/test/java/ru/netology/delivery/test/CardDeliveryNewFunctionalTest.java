@@ -24,7 +24,6 @@ public class CardDeliveryNewFunctionalTest {
         $("[data-test-id=date] input").sendKeys(Keys.CONTROL+"A"+Keys.DELETE);
         $("[data-test-id=date] input").setValue(DataGenerator.Registration.getDayVisit(3));
         $("[data-test-id=name] input").setValue("Андреев Алексей");
-        $("[data-test-id=name] input").setValue("Андреев Алексей");
         $("[data-test-id=phone] input").setValue("+79525140000");
         $("[data-test-id=agreement] input").click();
         $("button.button").click();
