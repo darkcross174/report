@@ -20,17 +20,17 @@ public class DataGenerator {
 
     public static String generateCity(String locale) {
         Faker faker = new Faker(new Locale("ru"));
-        return generateCity(faker.address().city());
+        return faker.address().city();
     }
 
     public static String generateName(String locale) {
         Faker faker = new Faker(new Locale("ru"));
-        return generateName(faker.name().lastName() + (" ") + faker.name().firstName());
+        return faker.name().lastName() + (" ") + faker.name().firstName();
     }
 
     public static String generatePhone(String locale) {
         Faker faker = new Faker(new Locale("ru"));
-        return generatePhone(faker.phoneNumber().phoneNumber());
+        return faker.phoneNumber().phoneNumber();
     }
 
     public static class Registration {
