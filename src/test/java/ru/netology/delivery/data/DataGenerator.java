@@ -13,9 +13,9 @@ public class DataGenerator {
 
     public static String generateDate(int plusDays) {
         LocalDate today = LocalDate.now();
-        LocalDate date = today.plusDays(Long.parseLong(String.valueOf(plusDays)));
+        LocalDate newDate = today.plusDays(plusDays);
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy");
-        return formatter.format(date);
+        return formatter.format(newDate);
     }
 
     public static String generateCity(String locale) {
