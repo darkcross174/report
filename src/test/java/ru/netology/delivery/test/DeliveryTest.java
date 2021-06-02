@@ -33,8 +33,8 @@ class DeliveryTest {
         $("[data-test-id=city] input").setValue(DataGenerator.generateCity("ru"));
         $("[data-test-id=date] input").sendKeys(Keys.CONTROL+"A"+Keys.DELETE);
         $("[data-test-id=date] input").setValue(DataGenerator.generateDate(3));
-        $("[data-test-id=date] input").setValue(DataGenerator.generateName("ru"));
-        $("[data-test-id=date] input").setValue(DataGenerator.generatePhone("ru"));
+        $("[data-test-id=name] input").setValue(DataGenerator.generateName("ru"));
+        $("[data-test-id=phone] input").setValue(DataGenerator.generatePhone("ru"));
         $("[data-test-id=agreement] .checkbox__box").click();
         $("button.button").click();
     }
