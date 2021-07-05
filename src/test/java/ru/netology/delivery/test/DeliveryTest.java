@@ -53,41 +53,10 @@ class DeliveryTest {
         $("button.button").click();
     }
 
-
-    @Test
-    void shouldSubmitForm() {
-        $("[data-test-id=city] input").setValue("Калуга");
-        LocalDate date=LocalDate.now().plusDays(3);
-        String dayVisit=date.format(DateTimeFormatter.ofPattern("dd.MM.yyyy"));
-        $("[data-test-id=date] input").sendKeys(Keys.CONTROL+"A"+Keys.DELETE);
-        $("[data-test-id=date] input").setValue(dayVisit);
-        $("[data-test-id=name] input").setValue("Елифанова Анастасия");
-        $("[data-test-id=phone] input").setValue("+79270000000");
-        $("[data-test-id=agreement]").click();
-        $("button.button").click();
-        $(withText("Успешно!")).waitUntil(visible,15000);
-        $("button.button").click();
-        $(withText("У Вас уже запланирована встрача на эту дату. Хотите перепланировать!")).waitUntil(visible,15000);
-    }
-
-
 }
 
 
 
-
-    //@Test
-    //void shouldCardDeliveryOnOneDate() {
-        //$("[data-test-id=city] input").setValue("Челябинск");
-        //$("[data-test-id=date] input").sendKeys(Keys.CONTROL+"A"+Keys.DELETE);
-        //$("[data-test-id=date] input").setValue(DataGenerator.Registration.getDayVisit(3));
-        //$("[data-test-id=name] input").setValue("Андреев Алексей");
-        //$("[data-test-id=phone] input").setValue("+79525140000");
-        //$("[data-test-id=agreement]").click();
-        //$("button.button").click();
-        //$(withText("Успешно!")).waitUntil(Condition.visible, 150);
-        //$("button.button").click();
-        //$(withText("У вас уже запланирована встреча на другую дату. Перепланировать?")).waitUntil(Condition.visible, 150);
 
 
 
