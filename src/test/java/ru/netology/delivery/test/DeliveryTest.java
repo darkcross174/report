@@ -2,13 +2,17 @@ package ru.netology.delivery.test;
 
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.Selenide;
+import com.codeborne.selenide.logevents.SelenideLogger;
+import io.qameta.allure.selenide.AllureSelenide;
 import lombok.val;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 import org.openqa.selenium.Keys;
 import ru.netology.delivery.data.DataGenerator;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+
+import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selectors.withText;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
@@ -17,9 +21,19 @@ import static com.codeborne.selenide.Selenide.open;
 
 class DeliveryTest {
 
+    @BeforeAll
+    static void setUpAll() {
+        SelenideLogger.addListener("allure", new AllureSelenide());
+    }
+
     @BeforeEach
     void setUp() {
         open("http://localhost:9999/");
+    }
+
+    @AfterAll
+    static void tearDownAll() {
+        SelenideLogger.removeListener("allure");
     }
 
     @Test
@@ -38,6 +52,25 @@ class DeliveryTest {
         $("[data-test-id=agreement] .checkbox__box").click();
         $("button.button").click();
     }
+
+
+    @Test
+    void shouldSubmitForm() {
+        $("[data-test-id=city] input").setValue("Калуга");
+        LocalDate date=LocalDate.now().plusDays(3);
+        String dayVisit=date.format(DateTimeFormatter.ofPattern("dd.MM.yyyy"));
+        $("[data-test-id=date] input").sendKeys(Keys.CONTROL+"A"+Keys.DELETE);
+        $("[data-test-id=date] input").setValue(dayVisit);
+        $("[data-test-id=name] input").setValue("Елифанова Анастасия");
+        $("[data-test-id=phone] input").setValue("+79270000000");
+        $("[data-test-id=agreement]").click();
+        $("button.button").click();
+        $(withText("Успешно!")).waitUntil(visible,15000);
+        $("button.button").click();
+        $(withText("У Вас уже запланирована встрача на эту дату. Хотите перепланировать!")).waitUntil(visible,15000);
+    }
+
+
 }
 
 
